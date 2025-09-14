@@ -36,7 +36,8 @@ def create_introduction(json_obj: dict) -> dict:
 def create_chapters(json_obj: dir) -> list:
     htmls = []
     for index, chapter in enumerate(json_obj["text"][""]):
-        title = chapter[0][0].removeprefix('<strong>').removesuffix('</strong>').split('/')[0].strip().replace('"', "''")
+        title = chapter[0][0].removeprefix('<strong>').removesuffix('</strong>').split('/')[0].strip().replace('"',
+                                                                                                               "''")
         html = f'<h1>{title}</h1>'
         log_info(f'Converting {title} to HTML...')
         for sub_chapter in chapter:
@@ -113,8 +114,9 @@ def process(input_file: str) -> None:
 
 def main() -> None:
     if len(argv) < 2:
-        print(f'Usage: {argv[0]} input.json')
-    process(argv[1])
+        print(f'Usage: {argv[0]} <input.json>')
+    else:
+        process(argv[1])
 
 
 if __name__ == '__main__':
